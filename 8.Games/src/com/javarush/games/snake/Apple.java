@@ -5,12 +5,12 @@ import com.javarush.engine.cell.*;
 
 public class Apple extends GameObject{
 
-    private final String APPLE_SIGN = "X";
+    private static final String APPLE_SIGN = "X";
     Apple(int x, int y) {
         super(x, y);
     }
 
     public void draw(Game game){
-        game.setCellValueEx(SnakeGame.WIDTH/2,SnakeGame.HEIGHT/2,Color.RED,APPLE_SIGN);
+        game.setCellValueEx(x,y,Color.NONE,APPLE_SIGN,Color.RED,75);
     }
 }
