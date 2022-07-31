@@ -23,14 +23,10 @@ public class Snake extends GameObject{
         isAlive = true;
 
         //Задаём стартовые координаты змейки
-        GameObject firstElementOfSnake = new GameObject(x,y);
-        GameObject secondElementOfSnake = new GameObject(x+1,y);
-        GameObject thirdElementOfSnake = new GameObject(x+2,y);
-
         //Добавляем их в List snakeParts
-        snakeParts.add(firstElementOfSnake);
-        snakeParts.add(secondElementOfSnake);
-        snakeParts.add(thirdElementOfSnake);
+        snakeParts.add(new GameObject(x,y));
+        snakeParts.add(new GameObject(x+1,y));
+        snakeParts.add(new GameObject(x+2,y));
     }
 
     public List<GameObject> getSnakeParts() {
@@ -71,47 +67,28 @@ public class Snake extends GameObject{
     }
 
     public void move(){
-//        switch (direction){
-//            case LEFT:
-//                if (snakeParts.get(0).x-1 < 0){
-//                    isAlive = false;
-//                } else {
-//                    for (int i = 0; i < snakeParts.size(); i++) {
-//                        if(i==0){
-//                            snakeParts.get(0).x = snakeParts.get(0).x-1;
-//                        } else {
-//                            snakeParts.get(i).x = snakeParts.get(i).x-1;
-//                        }
-//                    }
-//                }
-//            case RIGHT:
-//                this.x = this.x + 1;
-//            case UP:
-//                this.y = this.y + 1;
-//            case DOWN:
-//                this.y = this.y - 1;
-//        }
+        GameObject newHeadOfSnake = createNewHead();
+        if (newHeadOfSnake.x < 0 || newHeadOfSnake.x > SnakeGame.WIDTH-1 || newHeadOfSnake.y < 0 || newHeadOfSnake.y > SnakeGame.HEIGHT-1){
+            isAlive = false;
+        } else {
+            snakeParts.add(0,newHeadOfSnake);
+            removeTail();
+        }
     }
 
     public GameObject createNewHead(){
-        GameObject newHeadOfSnake = null;
-        if (snakeParts.get(0).x-1 < 0 || snakeParts.get(0).x+1 > 14 || snakeParts.get(0).y-1 < 0 || snakeParts.get(0).y+1 > 14 ) {
-            isAlive = false;
-            return newHeadOfSnake;
-        } else {
             switch (direction){
                 case LEFT:
-                    return newHeadOfSnake = new GameObject(snakeParts.get(0).x-1, snakeParts.get(0).y);
+                    return new GameObject(snakeParts.get(0).x-1, snakeParts.get(0).y);
                 case RIGHT:
-                    return newHeadOfSnake = new GameObject(snakeParts.get(0).x+1, snakeParts.get(0).y);
+                    return new GameObject(snakeParts.get(0).x+1, snakeParts.get(0).y);
                 case UP:
-                    return newHeadOfSnake = new GameObject(snakeParts.get(0).x, snakeParts.get(0).y+1);
+                    return new GameObject(snakeParts.get(0).x, snakeParts.get(0).y+1);
                 case DOWN:
-                    return newHeadOfSnake = new GameObject(snakeParts.get(0).x, snakeParts.get(0).y-1);
+                    return new GameObject(snakeParts.get(0).x, snakeParts.get(0).y-1);
                 default:
-                    return newHeadOfSnake = new GameObject(snakeParts.get(0).x, snakeParts.get(0).y);
+                    return new GameObject(snakeParts.get(0).x, snakeParts.get(0).y);
             }
-        }
     }
 
     public void removeTail(){
