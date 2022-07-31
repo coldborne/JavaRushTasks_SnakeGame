@@ -22,7 +22,10 @@ public class SnakeGame extends Game {
 
     private void createGame(){
         drawScene();
-        Apple apple = new Apple(7,7);
-        apple.draw(this);
+        int firstXOfSnake = (int) (Math.random()*12+1);
+        int yOfSnake = (int) (Math.random()*12+1);
+        Snake snake = new Snake(firstXOfSnake,yOfSnake);
+//        Apple apple = new Apple(7,7);
+//        apple.draw(this);
     }
 }
