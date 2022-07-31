@@ -1,7 +1,7 @@
 package com.javarush.games.snake;/*Main method*/
 
 public class GameObject {
-    public boolean isAlive;
+    public boolean isAlive = true;
     public int x = 0;
     public int y = 0;
 
