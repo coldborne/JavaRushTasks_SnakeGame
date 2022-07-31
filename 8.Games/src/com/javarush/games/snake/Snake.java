@@ -1,10 +1,14 @@
 package com.javarush.games.snake;/*Main method*/
 
+import com.javarush.engine.cell.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Snake extends GameObject{
 
+    private static final String HEAD_SIGN = "H";
+    private static final String BODY_SIGN = "B";
     //List для хранения координат ячеек змейки
     private List<GameObject> snakeParts = new ArrayList<>();
 
@@ -28,5 +32,11 @@ public class Snake extends GameObject{
 
     public void setSnakeParts(List<GameObject> snakeParts) {
         this.snakeParts = snakeParts;
+    }
+
+    public void draw(Game game){
+        game.setCellValue(snakeParts.get(0).x, snakeParts.get(0).y, HEAD_SIGN);
+        game.setCellValue(snakeParts.get(1).x, snakeParts.get(1).y, BODY_SIGN);
+        game.setCellValue(snakeParts.get(2).x, snakeParts.get(2).y, BODY_SIGN);
     }
 }

@@ -5,6 +5,7 @@ import com.javarush.engine.cell.*;
 public class SnakeGame extends Game {
     public static final int WIDTH = 15;
     public static final int HEIGHT = 15;
+    private Snake snake;
 
     @Override
     public void initialize(){
@@ -18,13 +19,18 @@ public class SnakeGame extends Game {
                 setCellColor(x, y, Color.AQUA);
             }
         }
+        snake.draw(this);
     }
 
     private void createGame(){
+        int firstXOfSnake = WIDTH / 2;
+        int yOfSnake = HEIGHT / 2;
+        snake = new Snake(firstXOfSnake,yOfSnake);
         drawScene();
-        int firstXOfSnake = (int) (Math.random()*12+1);
-        int yOfSnake = (int) (Math.random()*12+1);
-        Snake snake = new Snake(firstXOfSnake,yOfSnake);
+
+//        int firstXOfSnake = (int) (Math.random()*12+1);
+//        int yOfSnake = (int) (Math.random()*12+1);
+
 //        Apple apple = new Apple(7,7);
 //        apple.draw(this);
     }
