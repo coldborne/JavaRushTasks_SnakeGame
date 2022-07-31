@@ -8,6 +8,7 @@ public class Apple extends GameObject{
     private static final String APPLE_SIGN = "X";
     Apple(int x, int y) {
         super(x, y);
+        isAlive = true;
     }
 
     public void draw(Game game){
