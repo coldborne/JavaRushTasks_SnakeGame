@@ -7,6 +7,8 @@ public class SnakeGame extends Game {
     public static final int HEIGHT = 15;
     private Snake snake;
 
+    private int turnDelay;
+
     @Override
     public void initialize(){
         setScreenSize(WIDTH, HEIGHT);
@@ -27,11 +29,18 @@ public class SnakeGame extends Game {
         int yOfSnake = HEIGHT / 2;
         snake = new Snake(firstXOfSnake,yOfSnake);
         drawScene();
-
+        turnDelay = 300;
+        setTurnTimer(turnDelay);
 //        int firstXOfSnake = (int) (Math.random()*12+1);
 //        int yOfSnake = (int) (Math.random()*12+1);
 
 //        Apple apple = new Apple(7,7);
 //        apple.draw(this);
+    }
+
+    @Override
+    public void onTurn(int a) {
+        snake.move();
+        drawScene();
     }
 }

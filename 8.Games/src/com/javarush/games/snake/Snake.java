@@ -68,6 +68,7 @@ public class Snake extends GameObject{
                 }
             }
         }
+    }
 
     }
 }
