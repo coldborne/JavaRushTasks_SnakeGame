@@ -40,7 +40,7 @@ public class SnakeGame extends Game {
 
     @Override
     public void onTurn(int a) {
-        snake.move();
+        //snake.move();
         drawScene();
     }
 }
