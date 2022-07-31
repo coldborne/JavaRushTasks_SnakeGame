@@ -42,7 +42,28 @@ public class Snake extends GameObject{
     }
 
     public void setDirection(Direction direction) {
-        this.direction = direction;
+        switch (direction){
+            case LEFT:
+                if(this.direction == Direction.RIGHT){} else {
+                    this.direction = direction;
+                }
+                break;
+            case RIGHT:
+                if(this.direction == Direction.LEFT){} else {
+                    this.direction = direction;
+                }
+                break;
+            case DOWN:
+                if(this.direction == Direction.UP){} else {
+                    this.direction = direction;
+                }
+                break;
+            case UP:
+                if(this.direction == Direction.DOWN){} else {
+                    this.direction = direction;
+                }
+                break;
+        }
     }
 
     public void draw(Game game){
@@ -83,9 +104,9 @@ public class Snake extends GameObject{
                 case RIGHT:
                     return new GameObject(snakeParts.get(0).x+1, snakeParts.get(0).y);
                 case UP:
-                    return new GameObject(snakeParts.get(0).x, snakeParts.get(0).y+1);
-                case DOWN:
                     return new GameObject(snakeParts.get(0).x, snakeParts.get(0).y-1);
+                case DOWN:
+                    return new GameObject(snakeParts.get(0).x, snakeParts.get(0).y+1);
                 default:
                     return new GameObject(snakeParts.get(0).x, snakeParts.get(0).y);
             }
